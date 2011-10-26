@@ -131,6 +131,9 @@ Boolean linkqueue_enqueue_node (struct LinkQueue *queue, struct linkqueue_node *
 	if (queue->length >= queue->max_length)
 		return false;
 
+	if (queue->length < 0)
+		queue->length = 0;
+
 	if (!queue->rear || !queue->length) {
 		queue->front = node;
 		queue->rear = node;
